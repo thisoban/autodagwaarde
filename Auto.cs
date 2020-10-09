@@ -13,21 +13,25 @@ namespace AutoDagWaarde
         public int KmStand { get; private set; } = 1;
 
         private readonly string Kenteken;
-        private readonly int DagWaarde { get;  return (500000 / kilometerstand) * (int)Brandstof)}
+       // dit is readonly prop zonder keyword readonly
+        public int DagWaarde
+        {
+            get { return (500000 / KmStand) * (int)Brandstof; ; }
+        }
+
+
         public Auto(string kenteken, BrandstofSoort brandstofSoort)
         {
             Kenteken = kenteken;
             Brandstof = brandstofSoort;
         }
 
-        public int RijdKilometers(int getal)
+        public void RijdKilometers(int getal)
         {
             if (getal > 0)
             {
-                return getal;
+                KmStand += getal;
             }
-
-            return getal;
         }
 
         
